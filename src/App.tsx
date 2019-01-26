@@ -1,18 +1,19 @@
-import React, { Component } from "react"
+import React from "react"
 import Content from "./Content/Content"
 import Footer from "./Footer/Footer"
 import { Global } from "@emotion/core"
 import styled from "@emotion/styled"
+import Div100vh from "react-div-100vh"
 import { BASE_SIZING_UNIT } from "./variables"
 
 const FOOTER_HEIGHT = `${6 * BASE_SIZING_UNIT}px`
 
-const FixedHeightFooter = styled(Footer)({
-  height: FOOTER_HEIGHT,
+const FixedHeightContent = styled(Content)({
+  height: `calc(100% - ${FOOTER_HEIGHT})`,
 })
 
-const FixedHeightContent = styled(Content)({
-  height: `calc(100vh - ${FOOTER_HEIGHT})`,
+const FixedHeightFooter = styled(Footer)({
+  height: FOOTER_HEIGHT,
 })
 
 const App = () => (
@@ -29,10 +30,10 @@ const App = () => (
         },
       }}
     />
-    <div>
+    <Div100vh>
       <FixedHeightContent />
       <FixedHeightFooter />
-    </div>
+    </Div100vh>
   </React.Fragment>
 )
 

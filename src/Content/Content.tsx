@@ -1,5 +1,5 @@
 import React from "react"
-import Journals from "./components/Journals/Journals"
+import JournalList from "./components/JournalList/JournalList"
 
 interface Props {
   className?: string
@@ -7,7 +7,7 @@ interface Props {
 
 const Content = ({ className }: Props) => (
   <div className={className}>
-    <Journals />
+    <JournalList />
   </div>
 )
 
