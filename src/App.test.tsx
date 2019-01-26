@@ -5,6 +5,7 @@ import App from "./App"
 describe("The Home Page", () => {
   it("successfully loads", () => {
     const { getByText } = render(<App />)
-    expect(getByText("Learn React")).toBeInTheDocument()
+    expect(getByText("Journals")).toBeInTheDocument()
+    expect(getByText("Footer")).toBeInTheDocument()
   })
 })
