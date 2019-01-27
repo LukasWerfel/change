@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "@emotion/styled"
 import Journal from "./components/Journal/Journal"
-import { COLOR, BASE_SIZING_UNIT } from "../../../variables"
+import { COLOR, BASE_SIZING_UNIT } from "../../../../variables"
 
 const HEADER_HEIGHT = `${6 * BASE_SIZING_UNIT}px`
 
@@ -16,13 +16,17 @@ const HeaderBackground = styled.div({
   borderBottom: `1px solid ${COLOR.GREY[4]}`,
   backgroundColor: COLOR.GREY[2],
   height: HEADER_HEIGHT,
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  alignItems: "center",
 })
 
 const JournalList = () => (
   <div>
     <HeaderBackground>
-      <span>Edit</span>
-      <span>Add</span>
+      <button>Edit</button>
+      <button>Add</button>
     </HeaderBackground>
     <div>
       <Journal />
