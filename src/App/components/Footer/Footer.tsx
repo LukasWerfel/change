@@ -18,7 +18,6 @@ const Background = styled.div({
 const Footer = ({ className }: Props) => (
   <Background className={className}>
     <button>Journals</button>
-    <button>Settings</button>
   </Background>
 )
 

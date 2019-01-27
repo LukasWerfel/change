@@ -6,6 +6,5 @@ describe("<Footer />", () => {
   it("renders", () => {
     const { getByText } = render(<Footer />)
     expect(getByText("Journals")).toBeInTheDocument()
-    expect(getByText("Settings")).toBeInTheDocument()
   })
 })

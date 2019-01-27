@@ -3,8 +3,6 @@ import styled from "@emotion/styled"
 import Journal from "./components/Journal/Journal"
 import { COLOR, BASE_SIZING_UNIT } from "../../../../variables"
 
-const HEADER_HEIGHT = `${6 * BASE_SIZING_UNIT}px`
-
 const FAKE_JOURNAL_DATA = [
   {
     id: 1,
@@ -15,11 +13,18 @@ const FAKE_JOURNAL_DATA = [
 const HeaderBackground = styled.div({
   borderBottom: `1px solid ${COLOR.GREY[4]}`,
   backgroundColor: COLOR.GREY[2],
-  height: HEADER_HEIGHT,
+  height: `${6 * BASE_SIZING_UNIT}px`,
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",
   alignItems: "center",
+})
+
+const Padding = styled.div({
+  padding: `${1 * BASE_SIZING_UNIT}px`,
+  ">*": {
+    paddingBottom: `${3 * BASE_SIZING_UNIT}px`,
+  },
 })
 
 const JournalList = () => (
@@ -28,11 +33,11 @@ const JournalList = () => (
       <button>Edit</button>
       <button>Add</button>
     </HeaderBackground>
-    <div>
+    <Padding>
       <Journal />
       <Journal />
       <Journal />
-    </div>
+    </Padding>
   </div>
 )
 
