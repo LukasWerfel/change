@@ -1,6 +1,6 @@
 import React from "react"
-import Content from "./Content/Content"
-import Footer from "./Footer/Footer"
+import Content from "./components/Content/Content"
+import Footer from "./components/Footer/Footer"
 import { Global } from "@emotion/core"
 import styled from "@emotion/styled"
 import Div100vh from "react-div-100vh"
