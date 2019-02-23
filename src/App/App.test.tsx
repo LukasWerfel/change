@@ -5,6 +5,6 @@ import App from "./App"
 describe("The Home Page", () => {
   it("successfully loads", () => {
     const { getByText } = render(<App />)
-    expect(getByText("Create OSS PR")).toBeInTheDocument()
+    expect(getByText("create oss pr")).toBeInTheDocument()
   })
 })

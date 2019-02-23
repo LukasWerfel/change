@@ -1,14 +1,14 @@
 import React from "react"
 import styled from "@emotion/styled"
-import { COLOR, getSize } from "../../variables"
+import { COLOR } from "../../variables"
 
 interface Props {
   className?: string
 }
 
 const Background = styled.div({
-  paddingLeft: getSize(1),
-  paddingRight: getSize(1),
+  paddingLeft: "8px",
+  paddingRight: "8px",
   borderTop: `1px solid ${COLOR.GREY[4]}`,
   backgroundColor: COLOR.GREY[2],
   display: "flex",

@@ -8,8 +8,9 @@
     "@emotion/styled": "10.0.6",
     "@types/jest": "24.0.6",
     "@types/node": "11.9.5",
-    "@types/react-dom": "16.8.2",
     "@types/react": "16.8.4",
+    "@types/react-dom": "16.8.2",
+    "aguid": "2.0.0",
     "react": "16.8.3",
     "react-div-100vh": "0.3.2",
     "react-dom": "16.8.3",
@@ -21,6 +22,7 @@
     "cypress-testing-library": "2.3.6",
     "eslint-plugin-cypress": "2.2.1",
     "eslint-plugin-prettier": "3.0.1",
+    "factory.ts": "0.4.1",
     "gh-pages": "2.0.1",
     "husky": "1.3.1",
     "jest-dom": "3.1.2",
@@ -36,7 +38,7 @@
     "test": "react-scripts test",
     "test:e2e": "cypress run",
     "lint": "eslint src --ext tsx --ext ts --ignore-pattern serviceWorker.ts --ignore-pattern module-declarations",
-    "prettify": "prettier",
+    "prettify": "prettier --parser typescript",
     "eject": "react-scripts eject"
   },
   "jest": {
