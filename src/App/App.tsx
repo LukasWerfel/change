@@ -4,9 +4,9 @@ import Footer from "./components/Footer/Footer"
 import { Global } from "@emotion/core"
 import styled from "@emotion/styled"
 import Div100vh from "react-div-100vh"
-import { BASE_SIZING_UNIT } from "./variables"
+import { getSize } from "./variables"
 
-const FOOTER_HEIGHT = `${6 * BASE_SIZING_UNIT}px`
+const FOOTER_HEIGHT = getSize(6)
 
 const FixedHeightContent = styled(Content)({
   height: `calc(100% - ${FOOTER_HEIGHT})`,

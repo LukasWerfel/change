@@ -1,4 +1,6 @@
-export const BASE_SIZING_UNIT = 8
+const BASE_SIZING_UNIT_PIXELS = 8
+
+export const getSize = (spacingUnit: number): string => `${spacingUnit * BASE_SIZING_UNIT_PIXELS}px`
 
 export const COLOR = {
   // taken from https://ant.design/docs/spec/colors
