@@ -1,9 +1,9 @@
 import React from "react"
 import styled from "@emotion/styled"
-import { COLOR, BASE_SIZING_UNIT } from "../../../../../../variables"
+import { COLOR, getSize } from "../../../../../../variables"
 
 const Entry = styled.div({
-  height: `${3 * BASE_SIZING_UNIT}px`,
+  height: getSize(3),
   boxShadow: "inset 0 0 1px #000000",
   flex: 1,
   ":first-of-type": {
@@ -17,7 +17,7 @@ const Entry = styled.div({
 })
 
 const EntryList = styled.div({
-  paddingTop: `${1 * BASE_SIZING_UNIT}px`,
+  paddingTop: getSize(1),
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",

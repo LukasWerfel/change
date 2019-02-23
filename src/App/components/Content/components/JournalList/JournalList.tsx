@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "@emotion/styled"
 import Journal from "./components/Journal/Journal"
-import { COLOR, BASE_SIZING_UNIT } from "../../../../variables"
+import { COLOR, getSize } from "../../../../variables"
 
 const FAKE_JOURNAL_DATA = [
   {
@@ -11,9 +11,11 @@ const FAKE_JOURNAL_DATA = [
 ]
 
 const HeaderBackground = styled.div({
+  paddingLeft: getSize(1),
+  paddingRight: getSize(1),
   borderBottom: `1px solid ${COLOR.GREY[4]}`,
   backgroundColor: COLOR.GREY[2],
-  height: `${6 * BASE_SIZING_UNIT}px`,
+  height: getSize(6),
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",
@@ -21,9 +23,9 @@ const HeaderBackground = styled.div({
 })
 
 const Padding = styled.div({
-  padding: `${1 * BASE_SIZING_UNIT}px`,
+  padding: getSize(1),
   ">*": {
-    paddingBottom: `${3 * BASE_SIZING_UNIT}px`,
+    paddingBottom: getSize(3),
   },
 })
 
