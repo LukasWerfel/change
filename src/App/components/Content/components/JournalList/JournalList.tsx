@@ -1,21 +1,15 @@
 import React from "react"
 import styled from "@emotion/styled"
 import Journal from "./components/Journal/Journal"
-import { COLOR, getSize } from "../../../../variables"
-
-const FAKE_JOURNAL_DATA = [
-  {
-    id: 1,
-    name: "My Journal",
-  },
-]
+import { COLOR } from "../../../../variables"
+import { Journal as JournalType } from "../../../../types"
 
 const HeaderBackground = styled.div({
-  paddingLeft: getSize(1),
-  paddingRight: getSize(1),
+  paddingLeft: "8px",
+  paddingRight: "8px",
   borderBottom: `1px solid ${COLOR.GREY[4]}`,
   backgroundColor: COLOR.GREY[2],
-  height: getSize(6),
+  height: "56px",
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",
@@ -23,22 +17,26 @@ const HeaderBackground = styled.div({
 })
 
 const Padding = styled.div({
-  padding: getSize(1),
+  padding: "8px",
   ">*": {
-    paddingBottom: getSize(3),
+    paddingBottom: "24px",
   },
 })
 
-const JournalList = () => (
+type Props = {
+  journalList: Array<JournalType>
+}
+
+const JournalList = ({ journalList }: Props) => (
   <div>
     <HeaderBackground>
       <button>Edit</button>
       <button>Add</button>
     </HeaderBackground>
     <Padding>
-      <Journal />
-      <Journal />
-      <Journal />
+      {journalList.map(jn => (
+        <Journal key={jn.id} journal={jn} />
+      ))}
     </Padding>
   </div>
 )

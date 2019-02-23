@@ -1,9 +1,9 @@
 import React from "react"
 import styled from "@emotion/styled"
-import { COLOR, getSize } from "../../../../../../variables"
+import { Journal as JournalType } from "../../../../../../types"
 
 const Entry = styled.div({
-  height: getSize(3),
+  height: "24px",
   boxShadow: "inset 0 0 1px #000000",
   flex: 1,
   ":first-of-type": {
@@ -17,25 +17,23 @@ const Entry = styled.div({
 })
 
 const EntryList = styled.div({
-  paddingTop: getSize(1),
+  paddingTop: "8px",
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",
   alignItems: "center",
 })
 
-const Journal = () => (
+const NUMBER_OF_ENTRIES_SHOWN = 7
+
+type Props = {
+  journal: JournalType
+}
+
+const Journal = ({ journal }: Props) => (
   <div>
-    <span>Create OSS PR</span>
-    <EntryList>
-      <Entry />
-      <Entry />
-      <Entry />
-      <Entry />
-      <Entry />
-      <Entry />
-      <Entry />
-    </EntryList>
+    <span>{journal.name}</span>
+    <EntryList>{new Array(NUMBER_OF_ENTRIES_SHOWN).fill(<Entry />)}</EntryList>
   </div>
 )
 
