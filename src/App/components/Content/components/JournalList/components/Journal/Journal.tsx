@@ -1,20 +1,30 @@
 import React from "react"
 import styled from "@emotion/styled"
-import { Journal as JournalType } from "../../../../../../types"
+import { COLOR } from "../../../../../../variables"
+import { Journal as JournalType, Entry as EntryType } from "../../../../../../types"
 
-const Entry = styled.div({
-  height: "24px",
-  boxShadow: "inset 0 0 1px #000000",
-  flex: 1,
-  ":first-of-type": {
-    borderTopLeftRadius: "4px",
-    borderBottomLeftRadius: "4px",
+type EntryProps = {
+  entry: EntryType | undefined
+}
+
+const Entry = styled.div(
+  {
+    height: "24px",
+    boxShadow: "inset 0 0 1px #000000",
+    flex: 1,
+    ":first-of-type": {
+      borderTopLeftRadius: "4px",
+      borderBottomLeftRadius: "4px",
+    },
+    ":last-child": {
+      borderTopRightRadius: "4px",
+      borderBottomRightRadius: "4px",
+    },
   },
-  ":last-child": {
-    borderTopRightRadius: "4px",
-    borderBottomRightRadius: "4px",
-  },
-})
+  ({ entry }: EntryProps) => ({
+    backgroundColor: entry && entry.status === "SUCCEEDED" ? COLOR.GREEN[5] : COLOR.RED[5],
+  }),
+)
 
 const EntryList = styled.div({
   paddingTop: "8px",
@@ -26,15 +36,42 @@ const EntryList = styled.div({
 
 const NUMBER_OF_ENTRIES_SHOWN = 7
 
+const getDateOfDaysAgo = (daysAgo: number) => {
+  const today = new Date()
+  const dateDaysAgo = new Date()
+  dateDaysAgo.setDate(today.getDate() - daysAgo)
+  return dateDaysAgo.toISOString().slice(0, 10)
+}
+
 type Props = {
   journal: JournalType
 }
 
-const Journal = ({ journal }: Props) => (
-  <div>
-    <span>{journal.name}</span>
-    <EntryList>{new Array(NUMBER_OF_ENTRIES_SHOWN).fill(<Entry />)}</EntryList>
-  </div>
-)
+const Journal = ({ journal }: Props) => {
+  const recentEntries = new Array(NUMBER_OF_ENTRIES_SHOWN).fill(undefined).map((_, idx) => {
+    const date = getDateOfDaysAgo(idx)
+    const entry = journal.entries.find(entry => entry.date === date)
+    return {
+      date,
+      entry,
+    }
+  })
+  return (
+    <div>
+      <span>{journal.name}</span>
+      <EntryList>
+        {recentEntries.map(({ entry, date }) => (
+          <Entry
+            data-testid={`Entry-${date}-${
+              entry && entry.status === "SUCCEEDED" ? "Succeeded" : "Failed"
+            }`}
+            key={date}
+            entry={entry}
+          />
+        ))}
+      </EntryList>
+    </div>
+  )
+}
 
 export default Journal

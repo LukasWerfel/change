@@ -1,7 +1,5 @@
 const BASE_SIZING_UNIT_PIXELS = 8
 
-export const getSize = (spacingUnit: number): string => `${spacingUnit * BASE_SIZING_UNIT_PIXELS}px`
-
 export const COLOR = {
   // taken from https://ant.design/docs/spec/colors
   GREY: {
@@ -15,5 +13,29 @@ export const COLOR = {
     8: "#595959",
     9: "#262626",
     10: "#000000",
+  },
+  GREEN: {
+    1: "#f6ffed",
+    2: "#d9f7be",
+    3: "#b7eb8f",
+    4: "#95de64",
+    5: "#73d13d",
+    6: "#52c41a",
+    7: "#389e0d",
+    8: "#237804",
+    9: "#135200",
+    10: "#092b00",
+  },
+  RED: {
+    1: "#fff1f0",
+    2: "#ffccc7",
+    3: "#ffa39e",
+    4: "#ff7875",
+    5: "#ff4d4f",
+    6: "#f5222d",
+    7: "#cf1322",
+    8: "#a8071a",
+    9: "#820014",
+    10: "#5c0011",
   },
 }
