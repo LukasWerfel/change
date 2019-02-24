@@ -1,7 +1,7 @@
 import React from "react"
 import { render } from "react-testing-library"
 import JournalList from "./JournalList"
-import { journalFactory } from "../../../../types"
+import { journalFactory, entryFactory } from "../../../../types"
 
 describe("<JournalList />", () => {
   it("renders add button", () => {
@@ -18,9 +18,18 @@ describe("<JournalList />", () => {
     const journalList = [
       journalFactory.build({ name: "Journal One" }),
       journalFactory.build({ name: "Journal Two" }),
-      journalFactory.build({ name: "Journal Three" }),
+      journalFactory.build({
+        name: "Journal Three",
+        entries: [
+          entryFactory.build({
+            date: "2019-02-24",
+            status: "SUCCEEDED",
+          }),
+        ],
+      }),
     ]
-    const { getByText } = render(<JournalList journalList={journalList} />)
+    const { getByText, queryByTestId } = render(<JournalList journalList={journalList} />)
     journalList.forEach(jn => expect(getByText(jn.name)).toBeInTheDocument())
+    expect(queryByTestId("Entry-2019-02-24-Succeeded")).toBeInTheDocument()
   })
 })
