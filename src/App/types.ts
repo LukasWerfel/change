@@ -6,7 +6,7 @@ import aguid from "aguid"
 // prettier-ignore
 export type Entry = {
   date: string,
-  status: "SUCCEEDED" | "FAILED" | "SKIPPED",
+  status: "SUCCEEDED" | "FAILED",
 }
 
 export const entryFactory = Factory.Sync.makeFactory<Entry>({
