@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "@emotion/styled"
+import EntryEditor from "./components/EntryEditor/EntryEditor"
 import { COLOR } from "../../../../../../variables"
 import { Journal as JournalType, Entry as EntryType } from "../../../../../../types"
 
@@ -48,6 +49,8 @@ type Props = {
 }
 
 const Journal = ({ journal }: Props) => {
+  const [showEntryEditor, setShowEntryEditor] = useState(false)
+
   const recentEntries = new Array(NUMBER_OF_ENTRIES_SHOWN).fill(undefined).map((_, idx) => {
     const date = getDateOfDaysAgo(idx)
     const entry = journal.entries.find(entry => entry.date === date)
@@ -58,18 +61,21 @@ const Journal = ({ journal }: Props) => {
   })
   return (
     <div>
-      <span>{journal.name}</span>
-      <EntryList>
-        {recentEntries.map(({ entry, date }) => (
-          <Entry
-            data-testid={`Entry-${date}-${
-              entry && entry.status === "SUCCEEDED" ? "Succeeded" : "Failed"
-            }`}
-            key={date}
-            entry={entry}
-          />
-        ))}
-      </EntryList>
+      <div onClick={() => setShowEntryEditor(!showEntryEditor)}>
+        <span>{journal.name}</span>
+        <EntryList>
+          {recentEntries.map(({ entry, date }) => (
+            <Entry
+              data-testid={`Entry-${date}-${
+                entry && entry.status === "SUCCEEDED" ? "Succeeded" : "Failed"
+              }`}
+              key={date}
+              entry={entry}
+            />
+          ))}
+        </EntryList>
+      </div>
+      {showEntryEditor && <EntryEditor />}
     </div>
   )
 }
