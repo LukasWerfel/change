@@ -3,6 +3,7 @@ import styled from "@emotion/styled"
 import EntryEditor from "./components/EntryEditor/EntryEditor"
 import { COLOR } from "../../../../../../variables"
 import { Journal as JournalType, Entry as EntryType } from "../../../../../../types"
+import Spacer from "../../../../../../../components/Spacer/Spacer"
 
 type EntryProps = {
   entry: EntryType | undefined
@@ -75,7 +76,11 @@ const Journal = ({ journal }: Props) => {
           ))}
         </EntryList>
       </div>
-      {showEntryEditor && <EntryEditor />}
+      {showEntryEditor && (
+        <Spacer top="16px">
+          <EntryEditor />
+        </Spacer>
+      )}
     </div>
   )
 }
