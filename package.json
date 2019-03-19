@@ -30,7 +30,7 @@
     "lint-staged": "8.1.5",
     "mockdate": "2.0.2",
     "prettier": "1.16.0",
-    "react-testing-library": "6.0.0"
+    "react-testing-library": "6.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
