@@ -10,7 +10,7 @@
     "@types/mockdate": "2.0.0",
     "@types/react": "16.8.6",
     "@types/node": "11.10.4",
-    "@types/react-dom": "16.8.2",
+    "@types/react-dom": "16.8.4",
     "aguid": "2.0.0",
     "react": "16.8.3",
     "react-div-100vh": "0.3.2",
