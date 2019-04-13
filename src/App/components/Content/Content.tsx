@@ -13,6 +13,12 @@ const Content = ({ className }: Props) => (
         journalFactory.build({
           entries: [entryFactory.build()],
         }),
+        journalFactory.build({
+          entries: [entryFactory.build()],
+        }),
+        journalFactory.build({
+          entries: [entryFactory.build()],
+        }),
       ]}
     />
   </div>
