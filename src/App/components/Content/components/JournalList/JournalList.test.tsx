@@ -2,6 +2,11 @@ import React from "react"
 import { render } from "react-testing-library"
 import JournalList from "./JournalList"
 import { journalFactory, entryFactory } from "../../../../types"
+import MockDate from "mockdate"
+
+beforeAll(() => {
+  MockDate.set("2019-02-24")
+})
 
 describe("<JournalList />", () => {
   it("renders add button", () => {
