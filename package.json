@@ -15,7 +15,7 @@
     "react": "16.8.3",
     "react-div-100vh": "0.3.2",
     "react-dom": "16.8.3",
-    "react-scripts": "2.1.5",
+    "react-scripts": "2.1.8",
     "typescript": "3.2.4"
   },
   "devDependencies": {
