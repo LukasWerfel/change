@@ -9,17 +9,24 @@ beforeAll(() => {
 
 describe("<JournalList />", () => {
   it("clicking 'add' and 'done' adds journal", () => {
-    const { queryByText } = render(<JournalList />)
+    const { queryByText, queryByPlaceholderText } = render(<JournalList />)
+    const journalName = "My new journal"
     fireEvent.click(queryByText("Add"))
+    fireEvent.change(queryByPlaceholderText("name"), {
+      target: { value: journalName },
+    })
     fireEvent.click(queryByText("Done"))
-    expect(queryByText("Journal 0")).toBeInTheDocument()
+    expect(queryByText(journalName)).toBeInTheDocument()
   })
 
   it("clicking 'add' then 'cancel' does not add journal", () => {
-    const { queryByText } = render(<JournalList />)
+    const { queryByText, queryByPlaceholderText } = render(<JournalList />)
+    const journalName = "My new journal"
     fireEvent.click(queryByText("Add"))
-    fireEvent.click(queryByText("Cancel"))
-    expect(queryByText("Journal 0")).not.toBeInTheDocument()
+    fireEvent.change(queryByPlaceholderText("name"), {
+      target: { value: journalName },
+    })
+    expect(queryByText(journalName)).not.toBeInTheDocument()
   })
 
   it("renders edit button", () => {
