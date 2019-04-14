@@ -25,6 +25,6 @@ export type Journal = {
 
 export const journalFactory = Factory.Sync.makeFactory<Journal>({
   id: Factory.each(i => aguid(`${i}`)),
-  name: "create oss pr",
+  name: Factory.each(i => `Journal ${i}`),
   entries: [],
 })

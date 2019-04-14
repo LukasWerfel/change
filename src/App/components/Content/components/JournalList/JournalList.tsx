@@ -1,9 +1,9 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "@emotion/styled"
 import Journal from "./components/Journal/Journal"
 import DayOverview from "./components/DayOverview/DayOverview"
 import { COLOR } from "../../../../variables"
-import { Journal as JournalType } from "../../../../types"
+import { Journal as JournalType, journalFactory, entryFactory } from "../../../../types"
 import Spacer from "../../../../../components/Spacer/Spacer"
 
 const MenuBackground = styled.div({
@@ -19,29 +19,39 @@ const Menu = styled.div({
   height: "40px",
 })
 
-type Props = {
-  journalList: Array<JournalType>
-}
-
-const JournalList = ({ journalList }: Props) => (
-  <div>
-    <MenuBackground>
-      <Spacer right="8px" left="8px">
-        <Menu>
-          <button>Edit</button>
-          <button>Add</button>
-        </Menu>
-        <DayOverview />
-      </Spacer>
-    </MenuBackground>
-    <Spacer right="8px" left="8px">
-      {journalList.map(jn => (
-        <Spacer top="8px" bottom="16px">
-          <Journal key={jn.id} journal={jn} />
+const JournalList = () => {
+  const [journalList, setJournalList] = useState<Array<JournalType>>([])
+  return (
+    <div>
+      <MenuBackground>
+        <Spacer right="8px" left="8px">
+          <Menu>
+            <button>Edit</button>
+            <button
+              onClick={() =>
+                setJournalList([
+                  ...journalList,
+                  journalFactory.build({
+                    entries: [entryFactory.build()],
+                  }),
+                ])
+              }
+            >
+              Add
+            </button>
+          </Menu>
+          <DayOverview />
         </Spacer>
-      ))}
-    </Spacer>
-  </div>
-)
+      </MenuBackground>
+      <Spacer right="8px" left="8px">
+        {journalList.map(jn => (
+          <Spacer key={jn.id} top="8px" bottom="16px">
+            <Journal journal={jn} />
+          </Spacer>
+        ))}
+      </Spacer>
+    </div>
+  )
+}
 
 export default JournalList

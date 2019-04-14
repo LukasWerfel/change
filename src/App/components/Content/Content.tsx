@@ -1,6 +1,5 @@
 import React from "react"
 import JournalList from "./components/JournalList/JournalList"
-import { journalFactory, entryFactory } from "../../types"
 
 interface Props {
   className?: string
@@ -8,19 +7,7 @@ interface Props {
 
 const Content = ({ className }: Props) => (
   <div className={className}>
-    <JournalList
-      journalList={[
-        journalFactory.build({
-          entries: [entryFactory.build()],
-        }),
-        journalFactory.build({
-          entries: [entryFactory.build()],
-        }),
-        journalFactory.build({
-          entries: [entryFactory.build()],
-        }),
-      ]}
-    />
+    <JournalList />
   </div>
 )
 

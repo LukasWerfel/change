@@ -20,7 +20,7 @@ const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 const DayOverview = () => (
   <DayList>
     {DAYS.map(day => (
-      <Day>{day}</Day>
+      <Day key={day}>{day}</Day>
     ))}
   </DayList>
 )
