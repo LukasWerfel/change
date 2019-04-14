@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import Modal from "./components/Modal/Modal"
 import styled from "@emotion/styled"
 import { COLOR } from "../../../../../../variables"
@@ -19,20 +19,30 @@ const Menu = styled.div({
 // prettier-ignore
 type Props = {
   onCancel: () => void,
-  onDone: () => void
+  onDone: (name: string) => void
 }
 
-const AddNewJournalModal = ({ onCancel, onDone }: Props) => (
-  <Modal>
-    <Menu>
-      <Spacer left="8px">
-        <button onClick={onCancel}>Cancel</button>
-      </Spacer>
-      <Spacer right="8px">
-        <button onClick={onDone}>Done</button>
-      </Spacer>
-    </Menu>
-  </Modal>
-)
+const AddNewJournalModal = ({ onCancel, onDone }: Props) => {
+  const [inputText, setInputText] = useState("")
+  return (
+    <Modal>
+      <Menu>
+        <Spacer left="8px">
+          <button onClick={onCancel}>Cancel</button>
+        </Spacer>
+        <Spacer right="8px">
+          <button onClick={() => onDone(inputText)}>Done</button>
+        </Spacer>
+      </Menu>
+      <form>
+        <input
+          value={inputText}
+          placeholder="name"
+          onChange={event => setInputText(event.target.value)}
+        />
+      </form>
+    </Modal>
+  )
+}
 
 export default AddNewJournalModal

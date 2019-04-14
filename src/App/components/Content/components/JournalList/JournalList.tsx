@@ -28,10 +28,11 @@ const JournalList = () => {
       {showNewJournalModal && (
         <AddNewJournalModal
           onCancel={() => setShowNewJournalModal(false)}
-          onDone={() => {
+          onDone={name => {
             setJournalList([
               ...journalList,
               journalFactory.build({
+                name,
                 entries: [entryFactory.build()],
               }),
             ])
