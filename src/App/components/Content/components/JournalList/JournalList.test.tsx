@@ -26,6 +26,7 @@ describe("<JournalList />", () => {
     fireEvent.change(queryByPlaceholderText("name"), {
       target: { value: journalName },
     })
+    fireEvent.click(queryByText("Cancel"))
     expect(queryByText(journalName)).not.toBeInTheDocument()
   })
 
