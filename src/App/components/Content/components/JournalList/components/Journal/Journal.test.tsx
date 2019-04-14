@@ -45,7 +45,7 @@ describe("<Journal />", () => {
       }),
     ]
     const journal = journalFactory.build({ entries })
-    const { queryByTestId, debug } = render(<Journal journal={journal} />)
+    const { queryByTestId } = render(<Journal journal={journal} />)
     expect(queryByTestId("Entry-2019-02-24-Succeeded")).toBeInTheDocument()
     expect(queryByTestId("Entry-2019-02-23-Failed")).toBeInTheDocument()
     expect(queryByTestId("Entry-2019-02-22-Succeeded")).toBeInTheDocument()
