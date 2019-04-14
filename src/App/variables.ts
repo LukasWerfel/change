@@ -1,5 +1,3 @@
-const BASE_SIZING_UNIT_PIXELS = 8
-
 export const COLOR = {
   // taken from https://ant.design/docs/spec/colors
   GREY: {

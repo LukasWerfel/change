@@ -5,6 +5,7 @@ import DayOverview from "./components/DayOverview/DayOverview"
 import { COLOR } from "../../../../variables"
 import { Journal as JournalType, journalFactory, entryFactory } from "../../../../types"
 import Spacer from "../../../../../components/Spacer/Spacer"
+import AddNewJournalModal from "./components/AddNewJournalModal/AddNewJournalModal"
 
 const MenuBackground = styled.div({
   borderBottom: `1px solid ${COLOR.GREY[4]}`,
@@ -21,24 +22,28 @@ const Menu = styled.div({
 
 const JournalList = () => {
   const [journalList, setJournalList] = useState<Array<JournalType>>([])
+  const [showNewJournalModal, setShowNewJournalModal] = useState<boolean>(false)
   return (
     <div>
+      {showNewJournalModal && (
+        <AddNewJournalModal
+          onCancel={() => setShowNewJournalModal(false)}
+          onDone={() => {
+            setJournalList([
+              ...journalList,
+              journalFactory.build({
+                entries: [entryFactory.build()],
+              }),
+            ])
+            setShowNewJournalModal(false)
+          }}
+        />
+      )}
       <MenuBackground>
         <Spacer right="8px" left="8px">
           <Menu>
             <button>Edit</button>
-            <button
-              onClick={() =>
-                setJournalList([
-                  ...journalList,
-                  journalFactory.build({
-                    entries: [entryFactory.build()],
-                  }),
-                ])
-              }
-            >
-              Add
-            </button>
+            <button onClick={() => setShowNewJournalModal(true)}>Add</button>
           </Menu>
           <DayOverview />
         </Spacer>

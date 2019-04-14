@@ -1,7 +1,6 @@
 import React from "react"
 import { render, fireEvent } from "react-testing-library"
 import JournalList from "./JournalList"
-import { journalFactory, entryFactory } from "../../../../types"
 import MockDate from "mockdate"
 
 beforeAll(() => {
@@ -9,12 +8,18 @@ beforeAll(() => {
 })
 
 describe("<JournalList />", () => {
-  it("adds and displays journals", () => {
-    const { getByText, debug } = render(<JournalList />)
-    const addButton = getByText("Add")
-    expect(addButton).toBeInTheDocument()
-    fireEvent.click(addButton)
-    expect(getByText("Journal 0")).toBeInTheDocument()
+  it("clicking 'add' and 'done' adds journal", () => {
+    const { queryByText } = render(<JournalList />)
+    fireEvent.click(queryByText("Add"))
+    fireEvent.click(queryByText("Done"))
+    expect(queryByText("Journal 0")).toBeInTheDocument()
+  })
+
+  it("clicking 'add' then 'cancel' does not add journal", () => {
+    const { queryByText } = render(<JournalList />)
+    fireEvent.click(queryByText("Add"))
+    fireEvent.click(queryByText("Cancel"))
+    expect(queryByText("Journal 0")).not.toBeInTheDocument()
   })
 
   it("renders edit button", () => {
