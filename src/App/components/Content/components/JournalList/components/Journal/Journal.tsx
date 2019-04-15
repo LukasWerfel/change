@@ -76,11 +76,7 @@ const Journal = ({ journal }: Props) => {
           ))}
         </EntryList>
       </div>
-      {showEntryEditor && (
-        <Spacer top="16px">
-          <EntryEditor />
-        </Spacer>
-      )}
+      {showEntryEditor && <EntryEditor amountEntries={NUMBER_OF_ENTRIES_SHOWN} />}
     </div>
   )
 }
