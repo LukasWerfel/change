@@ -63,22 +63,33 @@ const Journal = ({ journal }: Props) => {
   })
   return (
     <div>
-      <div onClick={() => setShowEntryEditor(!showEntryEditor)}>
+      <div onClick={() => setShowEntryEditor(true)}>
         <span>{journal.name}</span>
         <EntryList>
-          {recentEntries.map(({ entry, date }) => (
+          {recentEntries.map(({ entry, date }, idx) => (
             <Entry
               data-testid={`Entry-${date}-${
                 entry && entry.status === "SUCCEEDED" ? "Succeeded" : "Failed"
               }`}
               key={date}
+              onClick={e => {
+                if (showEntryEditor) {
+                  e.stopPropagation()
+                  setSelectedEntry(idx)
+                }
+              }}
               entry={entry}
             />
           ))}
         </EntryList>
       </div>
       {showEntryEditor && (
-        <EntryEditor amountEntries={NUMBER_OF_ENTRIES_SHOWN} selectedEntry={selectedEntry} />
+        <EntryEditor
+          onSuccessClick={() => setShowEntryEditor(false)}
+          onFailClick={() => setShowEntryEditor(false)}
+          amountEntries={recentEntries.length}
+          selectedEntry={selectedEntry}
+        />
       )}
     </div>
   )

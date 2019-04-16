@@ -44,12 +44,16 @@ const Row = styled.div({
 type Props = {
   amountEntries: number,
   selectedEntry: number,
+  onSuccessClick: () => void,
+  onFailClick: () => void,
 }
 
-const EntryEditor = ({ amountEntries, selectedEntry }: Props) => {
-  const triangleRow = new Array(amountEntries).fill(<TrianglePlaceholder />)
+const EntryEditor = ({ amountEntries, selectedEntry, onSuccessClick, onFailClick }: Props) => {
+  const triangleRow = new Array(amountEntries)
+    .fill(undefined)
+    .map((_, idx) => <TrianglePlaceholder key={idx} />)
   triangleRow[selectedEntry] = (
-    <TriangleCenterer>
+    <TriangleCenterer key="triangle">
       <div>
         <Triangle />
       </div>
@@ -59,8 +63,8 @@ const EntryEditor = ({ amountEntries, selectedEntry }: Props) => {
     <NegativTopMargin>
       <Row>{triangleRow}</Row>
       <Background>
-        <button>Yes</button>
-        <button>No</button>
+        <button onClick={onSuccessClick}>Yes</button>
+        <button onClick={onFailClick}>No</button>
       </Background>
     </NegativTopMargin>
   )

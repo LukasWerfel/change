@@ -58,7 +58,7 @@ describe("<Journal />", () => {
     expect(queryByTestId("Entry-2019-02-17-Succeeded")).not.toBeInTheDocument()
   })
 
-  it("renders editor when clicked and hides it again", () => {
+  it("renders editor when clicked and hides it again when indicating success", () => {
     const journal = journalFactory.build()
     const { queryByText, getByText } = render(<Journal journal={journal} />)
     expect(queryByText("Yes")).not.toBeInTheDocument()
@@ -66,7 +66,20 @@ describe("<Journal />", () => {
     fireEvent.click(getByText(journal.name))
     expect(queryByText("Yes")).toBeInTheDocument()
     expect(queryByText("No")).toBeInTheDocument()
+    fireEvent.click(getByText("Yes"))
+    expect(queryByText("Yes")).not.toBeInTheDocument()
+    expect(queryByText("No")).not.toBeInTheDocument()
+  })
+
+  it("renders editor when clicked and hides it again when indicating failure", () => {
+    const journal = journalFactory.build()
+    const { queryByText, getByText } = render(<Journal journal={journal} />)
+    expect(queryByText("Yes")).not.toBeInTheDocument()
+    expect(queryByText("No")).not.toBeInTheDocument()
     fireEvent.click(getByText(journal.name))
+    expect(queryByText("Yes")).toBeInTheDocument()
+    expect(queryByText("No")).toBeInTheDocument()
+    fireEvent.click(getByText("No"))
     expect(queryByText("Yes")).not.toBeInTheDocument()
     expect(queryByText("No")).not.toBeInTheDocument()
   })
