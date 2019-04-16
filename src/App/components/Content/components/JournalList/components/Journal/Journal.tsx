@@ -51,6 +51,7 @@ type Props = {
 
 const Journal = ({ journal }: Props) => {
   const [showEntryEditor, setShowEntryEditor] = useState(false)
+  const [selectedEntry, setSelectedEntry] = useState(0)
 
   const recentEntries = new Array(NUMBER_OF_ENTRIES_SHOWN).fill(undefined).map((_, idx) => {
     const date = getDateOfDaysAgo(idx)
@@ -76,7 +77,9 @@ const Journal = ({ journal }: Props) => {
           ))}
         </EntryList>
       </div>
-      {showEntryEditor && <EntryEditor amountEntries={NUMBER_OF_ENTRIES_SHOWN} />}
+      {showEntryEditor && (
+        <EntryEditor amountEntries={NUMBER_OF_ENTRIES_SHOWN} selectedEntry={selectedEntry} />
+      )}
     </div>
   )
 }

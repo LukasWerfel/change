@@ -38,25 +38,32 @@ const Row = styled.div({
   flexDirection: "row",
 })
 
+/* prettier breaks this code somehow */
+/* TODO: investigate */
+// prettier-ignore
 type Props = {
-  amountEntries: number
+  amountEntries: number,
+  selectedEntry: number,
 }
 
-const EntryEditor = ({ amountEntries }: Props) => (
-  <NegativTopMargin>
-    <Row>
-      <TriangleCenterer>
-        <div>
-          <Triangle />
-        </div>
-      </TriangleCenterer>
-      {new Array(amountEntries - 1).fill(<TrianglePlaceholder />)}
-    </Row>
-    <Background>
-      <button>Yes</button>
-      <button>No</button>
-    </Background>
-  </NegativTopMargin>
-)
+const EntryEditor = ({ amountEntries, selectedEntry }: Props) => {
+  const triangleRow = new Array(amountEntries).fill(<TrianglePlaceholder />)
+  triangleRow[selectedEntry] = (
+    <TriangleCenterer>
+      <div>
+        <Triangle />
+      </div>
+    </TriangleCenterer>
+  )
+  return (
+    <NegativTopMargin>
+      <Row>{triangleRow}</Row>
+      <Background>
+        <button>Yes</button>
+        <button>No</button>
+      </Background>
+    </NegativTopMargin>
+  )
+}
 
 export default EntryEditor
