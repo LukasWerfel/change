@@ -13,7 +13,7 @@
     "@types/node": "11.13.4",
     "aguid": "2.0.0",
     "react": "16.8.6",
-    "react-div-100vh": "0.3.2",
+    "react-div-100vh": "0.3.8",
     "react-dom": "16.8.6",
     "react-scripts": "2.1.8",
     "typescript": "3.2.4"
