@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "cypress-testing-library": "2.4.0",
-    "cypress": "3.2.0",
+    "cypress": "3.8.3",
     "eslint-plugin-cypress": "2.2.1",
     "eslint-plugin-prettier": "3.0.1",
     "factory.ts": "0.4.5",
